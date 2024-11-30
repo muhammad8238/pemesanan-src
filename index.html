@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UD ZULDFADRI</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: rgb(44, 4, 4);
+            color: white;
+            overflow: hidden;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 0 15px white;
+            animation: moveFree 30s infinite ease-in-out;
+            opacity: 0.8;
+        }
+
+        .particle.red {
+            background: red;
+            box-shadow: 0 0 15px red;
+        }
+
+        @keyframes moveFree {
+            0% {
+                transform: translate(0, 0);
+                opacity: 0.8;
+            }
+            25% {
+                transform: translate(calc(-400px + 800px * var(--dir-x)), calc(-400px + 800px * var(--dir-y)));
+                opacity: 0.6;
+            }
+            50% {
+                transform: translate(calc(-800px + 1600px * var(--dir-x)), calc(-800px + 1600px * var(--dir-y)));
+                opacity: 0.4;
+            }
+            75% {
+                transform: translate(calc(-400px + 800px * var(--dir-x)), calc(-400px + 800px * var(--dir-y)));
+                opacity: 0.6;
+            }
+            100% {
+                transform: translate(0, 0);
+                opacity: 0.8;
+            }
+        }
+
+        .logo {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .logo img {
+            width: 120px;
+            margin-bottom: 15px;
+        }
+
+        .logo h1 {
+            font-size: 3em;
+            color: white;
+            text-transform: uppercase;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid red;
+            animation: typing 4s steps(20, end) infinite, blink 1s step-end infinite;
+        }
+
+        @keyframes typing {
+            0%, 100% {
+                width: 0;
+            }
+            50% {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        .logo p {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .whatsapp-btn {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid green;
+            color: green;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1em;
+            text-decoration: none;
+            box-shadow: 0 0 15px green;
+            transition: all 0.5s;
+        }
+
+        .whatsapp-btn:hover {
+            background: green;
+            color: white;
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        .whatsapp-btn:active {
+            box-shadow: 0 0 30px white;
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+
+    <div class="logo">
+        <img src="https://1.bp.blogspot.com/-TUXVyeYL6U8/XYIrgFbcyQI/AAAAAAAAAf4/KBb6blX5G5Q4_kAjFPHxO2_xNgeWefklgCLcBGAsYHQ/s1600/Logo%2BSRC%2BVector%2BCDR%2Bdan%2BPNG.png" alt="Logo">
+        <h1>TOKO UD ZULFADRI</h1>
+        <p>Pusat kebutuhan Anda</p>
+    </div>
+
+    <a href="https://wa.link/19m638" target="_blank" class="whatsapp-btn">WhatsApp</a>
+
+    <script>
+        const particleContainer = document.getElementById('particles');
+        const numberOfParticles = 200;
+
+        for (let i = 0; i < numberOfParticles; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            if (Math.random() > 0.5) {
+                particle.classList.add('red');
+            }
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.setProperty('--dir-x', Math.random());
+            particle.style.setProperty('--dir-y', Math.random());
+            particleContainer.appendChild(particle);
+        }
+    </script>
+</body>
+</html>
